@@ -1,10 +1,26 @@
-abstract class TodoState {}
+import 'package:equatable/equatable.dart';
 
-class TodoInitial extends TodoState {}
+abstract class TodoState extends Equatable {
+  const TodoState();
 
-class TodoLoading extends TodoState {}
+  @override
+  List<Object?> get props => [];
+}
+
+class TodoInitial extends TodoState {
+  const TodoInitial();
+}
+
+class TodoLoading extends TodoState {
+  const TodoLoading();
+}
 
 class TodoLoaded extends TodoState {
   final List<String> todos;
-  TodoLoaded(this.todos);
+
+  const TodoLoaded(this.todos);
+
+  @override
+  List<Object?> get props => [todos];
 }
+
